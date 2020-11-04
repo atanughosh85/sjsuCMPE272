@@ -11,8 +11,7 @@ public class GetClaims {
     private static final String template = "Hello, %s! Your sub is %s";
 
     @RequestMapping("/getClaims")
-    public String greeting(@RequestParam(value="name", defaultValue="DefaultUser") String name,
-                           @AuthenticationPrincipal Jwt accessToken) {
+    public String greeting(@RequestParam(value="name", defaultValue="DefaultUser") String name, @AuthenticationPrincipal Jwt accessToken) {
 
         return String.format(template, name, accessToken.getClaims().get("sub"));
     }
